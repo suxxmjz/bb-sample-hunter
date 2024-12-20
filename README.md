@@ -37,4 +37,4 @@ python main.py
 1. **Input**: Start with a list of Billboard URLs that have song names.
 2. **Scraping**: For each URL, scrape and parse the song titles.
 3. **API Request**: Search each song on the Genius API and check for samples.
-4. **Output**: Save the song and sample data to an Excel file.
+4. **Output**: Save the song and sample data to an CSV file.
