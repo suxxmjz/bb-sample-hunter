@@ -1,0 +1,6 @@
+.env
+venv
+app.log
+genius
+__pycache__
+html_files
