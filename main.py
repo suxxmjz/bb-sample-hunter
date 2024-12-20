@@ -27,9 +27,13 @@ def main():
         "https://www.billboard.com/lists/best-pop-songs-all-time-hits/"
     ]
     
-    output_excel = "bb_with_samples.xlsx"
+    output_csv = "bb_with_samples.csv"
     
-    process_and_save_data(urls, output_excel, logger, [0])
+    res = process_and_save_data(urls, output_csv, logger, [0])
+    if res:
+        logger.info("All data processed successfully!")
+    else:
+        logger.error("Error processing data")
 
 if __name__ == "__main__":
     main()

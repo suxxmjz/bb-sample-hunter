@@ -3,7 +3,7 @@
 # Billboard Sample Hunter
 
 ## Goal:
-Find samples used in the songs from [Billboard's 500 Best Pop Songs](https://www.billboard.com/lists/best-pop-songs-all-time-hits/irene-cara-flashdance-what-a-feeling/) into a formatted document (Excel).
+Find samples used in the songs from [Billboard's 500 Best Pop Songs](https://www.billboard.com/lists/best-pop-songs-all-time-hits/irene-cara-flashdance-what-a-feeling/) into a formatted document (CSV).
 
 ## To Run:
 ```
@@ -28,8 +28,7 @@ python main.py
    - The song info is sent to the Genius API using `requests` and an access token to find samples.
 
 3. **Processing the Data**:
-   - The song and sample data are organized into a list of dictionaries.
-   - `Pandas` converts this list into a DataFrame and saves it to an Excel file.
+   - The song and sample data are organized into a `Pandas` dataframe.
 
 4. **Logging**:
    - Python’s `logging` module logs actions and errors, so it's clear what's going on and troubleshooting is easier if needed.

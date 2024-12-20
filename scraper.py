@@ -1,14 +1,16 @@
 import requests
+from requests import codes
 from bs4 import BeautifulSoup
 from utils import extract_artist_and_song
+from typing import List, Dict
 
-def fetch_and_parse_html(url, logger, processed_count):
+def fetch_and_parse_html(url: str, logger, processed_count: List[int]) -> List[Dict[str, str]]:
     headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36 Edg/114.0.1823.43" 
     }
     try:
         response = requests.get(url, headers=headers)
-        if response.status_code == 200:
+        if response.status_code == codes.ok:
             soup = BeautifulSoup(response.text, "html.parser")
             return parse_html(soup, logger, processed_count)
         else:
@@ -18,7 +20,7 @@ def fetch_and_parse_html(url, logger, processed_count):
         logger.error(f"Error fetching {url}: {e}")
         return []
 
-def parse_html(soup, logger, processed_count):
+def parse_html(soup: BeautifulSoup, logger, processed_count: List[int]) -> List[Dict[str, str]]:
     list_items = soup.find_all("li", class_="pmc-fallback-list-item-wrap")
     parsed_data = []
 
