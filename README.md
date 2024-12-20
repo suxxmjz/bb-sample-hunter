@@ -6,9 +6,32 @@
 Find samples used in the songs from [Billboard's 500 Best Pop Songs](https://www.billboard.com/lists/best-pop-songs-all-time-hits/irene-cara-flashdance-what-a-feeling/) into a formatted document (CSV).
 
 ## To Run:
-```
-python main.py
-```
+1. **Create a virtual environment**:
+   ```bash
+   python -m venv venv
+   ```
+
+2. **Activate the virtual environment (Windows)**:
+     ```bash
+     .\venv\Scripts\activate
+     ```
+
+3. **Install the required packages**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Convert `example.env` to `.env` and add the Genius API access token**
+   - Refer to the [Genius API Documentation](https://docs.genius.com/) for more details.
+   - Open the `.env` file and add your Genius API access token:
+     ```env
+     GENIUS_ACCESS_TOKEN=your_genius_access_token_here
+     ```
+     
+5. **Run the main script**:
+   ```bash
+   python main.py
+   ```
 
 ## Tools Used:
 - **Python**: The programming language.
