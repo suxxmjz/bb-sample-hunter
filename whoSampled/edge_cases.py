@@ -1,3 +1,4 @@
+#IGNORE THIS FILE
 import csv
 import logging
 from urllib.parse import quote
@@ -11,7 +12,7 @@ logging.basicConfig(
 )
 
 
-def get_lead_artist(artist):
+def get_lead_artist(artist: str) -> str:
     if 'feat' in artist.lower():
         artist = artist.split(' feat')[0].strip()
     elif 'and the' in artist.lower():
@@ -24,7 +25,7 @@ def get_lead_artist(artist):
         artist = artist.split('&')[0].strip()
     return artist
 
-def create_whosampled_url(artist, song):
+def create_whosampled_url(artist: str, song : str) -> str:
     lead_artist = get_lead_artist(artist)
     lead_artist = lead_artist.replace('’', "'")
     song = song.replace('’', "'")
@@ -33,14 +34,14 @@ def create_whosampled_url(artist, song):
     return f"https://www.whosampled.com/{encoded_artist}/{encoded_song}/"
 
 
-def write_errors(errors):
+def write_errors(errors) -> None:
     with open('continued_errors.csv', 'a', newline='', encoding='utf-8') as error_file:
         writer = csv.writer(error_file)
         if error_file.tell() == 0:
             writer.writerow(['Artist', 'Song', 'URL', 'Error Response'])
         writer.writerows(errors)
 
-def write_samples(samples):
+def write_samples(samples) -> None:
     with open('all_samples.csv', 'a', newline='', encoding='utf-8') as sample_file:
         writer = csv.writer(sample_file)
 
@@ -54,8 +55,7 @@ def write_samples(samples):
             sampled_songs = sample['sampled_songs']
             writer.writerow([artist, song, sampled_songs])
 
-def process_songs():
-    errors = []
+def process_songs() -> None:
     all_samples = []
 
     row_start = 0
@@ -64,7 +64,6 @@ def process_songs():
     unresolved_errors = []
     with open('errors.csv', 'r', encoding='utf-8') as infile:
         reader = csv.reader(infile)
-        headers = next(reader)
 
         rows = list(reader)[row_start:row_end + 1]
 

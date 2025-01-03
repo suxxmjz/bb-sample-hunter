@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
+from typing import Tuple
 
-
-def extract_extra_samples_from_html(html_content):
+def extract_extra_samples_from_html(html_content: str) -> Tuple[str, bool]:
     soup = BeautifulSoup(html_content, 'html.parser')
     sampled_songs = []
 
@@ -17,7 +17,7 @@ def extract_extra_samples_from_html(html_content):
     return ', '.join(sampled_songs), False
 
 
-def extract_samples_from_html(html_content, extraSamples=False):
+def extract_samples_from_html(html_content: str, extraSamples: bool = False) -> Tuple[str, bool]:
     if extraSamples == True:
         return extract_extra_samples_from_html(html_content)
 

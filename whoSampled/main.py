@@ -12,7 +12,7 @@ logging.basicConfig(
 )
 
 
-def get_lead_artist(artist):
+def get_lead_artist(artist: str) -> str:
     if 'feat' in artist.lower():
         artist = artist.split(' feat')[0].strip()
     elif 'and the' in artist.lower():
@@ -25,7 +25,7 @@ def get_lead_artist(artist):
         artist = artist.split('&')[0].strip()
     return artist
 
-def create_whosampled_url(artist, song):
+def create_whosampled_url(artist: str, song: str) -> str:
     lead_artist = get_lead_artist(artist)
     lead_artist = lead_artist.replace('’', "'")
     song = song.replace('’', "'")
@@ -34,7 +34,7 @@ def create_whosampled_url(artist, song):
     return f"https://www.whosampled.com/{encoded_artist}/{encoded_song}/"
 
 
-def write_errors(errors):
+def write_errors(errors: list) -> None:
     with open('errors.csv', 'a', newline='', encoding='utf-8') as error_file:
         writer = csv.writer(error_file)
         if error_file.tell() == 0:
@@ -42,7 +42,7 @@ def write_errors(errors):
         writer.writerows(errors)
 
 
-def write_samples(samples):
+def write_samples(samples: list) -> None:
     with open('all_samples.csv', 'a', newline='', encoding='utf-8') as sample_file:
         writer = csv.writer(sample_file)
 
@@ -56,7 +56,7 @@ def write_samples(samples):
             writer.writerow([artist, song, sampled_songs])
 
 
-def process_songs():
+def process_songs() -> None:
     errors = []
     all_samples = []
 

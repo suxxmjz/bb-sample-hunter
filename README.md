@@ -5,6 +5,9 @@
 ## Goal:
 Find samples used in the songs from [Billboard's 500 Best Pop Songs](https://www.billboard.com/lists/best-pop-songs-all-time-hits/irene-cara-flashdance-what-a-feeling/) into a formatted document (CSV).
 
+## Note:
+ - To view the code for scraping samples using WhoSampled, please refer to the whoSampled folder.
+ - To view the code for scraping lyrics and annotations, please refer to the scrapeLyrics folder.
 ## To Run:
 1. **Create a virtual environment**:
    ```bash
